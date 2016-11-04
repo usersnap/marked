@@ -1,0 +1,44 @@
+<html>
+<head>
+  <meta charset="utf-8" />
+  <script src="../lib/marked.js"></script>
+</head>
+<body>
+  <textarea id="inbox" onchange="update(this)" style="width: 20em; height: 10em;">
+hallo
+[[here]]
+[[hello_world]]
+[[here](there)
+<!-- here -->
+:smile:
+* 1
+  </textarea>
+  <div id="result"></div>
+  <script type="text/javascript">
+    var renderer = new marked.Renderer();
+    var myPlaceholders = {
+      'hello_world': 'Hello world!'
+    }
+
+    renderer.placeholder = function(name, original) {
+      var substitution = myPlaceholders[name];
+      if (substitution) {
+        return substitution;
+      } else {
+        return this.sanitize(original);
+      }
+    };
+    console.log(marked('My Placeholder: [[hello_world]]', { placeholder: true, renderer: renderer }));
+
+    function update(elem) {
+      document.getElementById('result').innerHTML = marked(elem.value, {
+        breaks: true,
+        emoji: true,
+        placeholder: true,
+        renderer: renderer
+      });
+    }
+    update(document.getElementById('inbox'));
+  </script>
+</body>
+</html>
