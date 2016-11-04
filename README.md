@@ -285,8 +285,7 @@ var marked = require('marked');
 var renderer = new marked.Renderer();
 var myPlaceholders = {
   'hello_world': 'Hello world!'
-}
-renderer._placeholder = renderer.placeholder;
+};
 
 renderer.placeholder = function(name) {
   var substitution = myPlaceholders[name];

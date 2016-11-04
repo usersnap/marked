@@ -18,7 +18,7 @@ hallo
     var renderer = new marked.Renderer();
     var myPlaceholders = {
       'hello_world': 'Hello world!'
-    }
+    };
 
     renderer.placeholder = function(name, original) {
       var substitution = myPlaceholders[name];
