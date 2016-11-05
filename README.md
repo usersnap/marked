@@ -273,6 +273,7 @@ Type: `boolean`
 Default: `false`
 
 Enable replacement of colon-delimited Emoji emoticon codes like `:warning:` or `:+1:`.
+Available codes are listed in http://emoji.muan.co/
 
 ### placeholder
 
