@@ -267,15 +267,10 @@ Default: `false`
 
 Use "smart" typograhic punctuation for things like quotes and dashes.
 
-### emoji
+### placeholder
 
 Type: `boolean`
 Default: `false`
-
-Enable replacement of colon-delimited Emoji emoticon codes like `:warning:` or `:+1:`.
-Available codes are listed in http://emoji.muan.co/
-
-### placeholder
 
 Enable replacement of colon-delimited placeholders like `[[placeholder_name]]`.
 
@@ -293,7 +288,7 @@ renderer.placeholder = function(name) {
   if (substitution) {
     return substitution;
   } else {
-    return renderer._placeholder(name);
+    return renderer.sanitize(name);
   }
 };
 console.log(marked('My Placeholder: [[hello_world]]', { placeholder: true, renderer: renderer }));
